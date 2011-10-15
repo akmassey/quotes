@@ -9,9 +9,12 @@
   </head>
   <body>
     <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
+      <ul class="hmenu">
+        <%= render 'shared/navigation' %>
+      </ul>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+      <%- end -%>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
