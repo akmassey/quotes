@@ -1,4 +1,6 @@
 Quotes::Application.routes.draw do
+  resources :quotes
+
   root :to => "home#index"
   devise_for :users
   resources :users, :only => :show
