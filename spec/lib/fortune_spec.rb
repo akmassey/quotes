@@ -7,7 +7,7 @@ describe Fortune do
 "Time flies like an arrow; fruit flies like a banana."
     -- Groucho Marx
 %
-"If all else fails, immortality can always be assured by spectacular
+"If all else fails, immortality can always be assured by spectacular 
 error."
     -- John Kenneth Galbraith
 %
@@ -48,6 +48,9 @@ FORTUNE
     f.parse(@fortune_file)
     f.fortunes[0][:author].should eq("Groucho Marx")
     f.fortunes[1][:author].should eq("John Kenneth Galbraith")
+    f.fortunes[4][:author].should eq("Thomas Jefferson")
+    f.fortunes[5][:author].should eq("Aeschylus")
+    f.fortunes[6][:author].should eq("Benjamin Franklin")
     f.fortunes[7][:author].should eq("Kurt Vonnegut")
   end
 
@@ -55,6 +58,7 @@ FORTUNE
     f = Fortune.new
     f.parse(@fortune_file)
     f.fortunes[0][:quote].should eq("Time flies like an arrow; fruit flies like a banana.")
+    f.fortunes[1][:quote].should eq("If all else fails, immortality can always be assured by spectacular error.")
     f.fortunes[7][:quote].should eq("We are what we pretend to be, so we must be careful what we pretend to be.")
   end
 end

@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     unless params[:fortune].nil?
       fortune = Fortune.new(params[:fortune])
       quotes = fortune.quotes
-      @found = "Why not?"
+      @found = "It appears to have been successful."
     else
       @found = "Nil fortunes for everyone"
     end
