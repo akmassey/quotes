@@ -27,6 +27,8 @@ class QuotesController < ApplicationController
   # GET /quotes/new.json
   def new
     @quote = Quote.new
+    # TODO: Don't necessarily want to have a new author every time.
+    @quote.author = Author.new
 
     respond_to do |format|
       format.html # new.html.erb

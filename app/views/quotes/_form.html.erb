@@ -11,6 +11,19 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="field">
+    <%= f.label :source_url, "Source URL (optional)" %><br />
+    <%= f.text_field :source_url %>
+  </div>
+
+  <%= f.fields_for :author do |author_form| %>
+    <%= author_form.label :name %><br />
+    <%= author_form.text_field :name %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,7 +1,10 @@
-<h1>Listing quotes</h1>
+<% title "Listing Quotes" %>
 
 <table>
   <tr>
+    <th>Text</th>
+    <th>Author</th>
+    <th>Source URL</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +12,9 @@
 
 <% @quotes.each do |quote| %>
   <tr>
+    <td><%= quote.text %></td>
+    <td><%= quote.author.name %></td>
+    <td><%= quote.source_url %></td>
     <td><%= link_to 'Show', quote %></td>
     <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
     <td><%= link_to 'Destroy', quote, confirm: 'Are you sure?', method: :delete %></td>
