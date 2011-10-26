@@ -18,6 +18,10 @@ end
 
 gem 'jquery-rails'
 
+group :development do 
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'

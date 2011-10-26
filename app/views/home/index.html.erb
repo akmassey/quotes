@@ -1,5 +1,17 @@
 <% title "Home" %>
 
+<%= form_tag root_path do %>
+  <p>Please paste in a fortune file:</p>
+
+  <%= text_area_tag :fortune, params[:fortune] %>
+
+  <%= submit_tag "Parse" %>
+<% end %>
+
 <% @users.each do |user| %>
   <p>User: <%= link_to user.name, user %> </p>
 <% end %>
+
+<p>
+  <%= @found %>
+</p>

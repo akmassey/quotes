@@ -35,4 +35,11 @@ Quotes::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  if defined?(Footnotes) && Rails.env.development?
+    Footnotes.run! # first of all
+
+    # Enable opening Footnotes links with MacVim
+    Footnotes::Filter.prefix = 'mvim://open?url=file://%s&line=%d&column=%d'
+  end
 end
