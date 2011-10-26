@@ -6,13 +6,13 @@ class FortuneParser
 
     @fortunes.delete_if { |f| f == "" }
 
-    # @fortunes.each do |f|
-    #   next if f == "" 
-    #   quote = f.match(/".*"/)
-    #   author = f.match(/    -- .*/)
+    @fortunes.each do |f|
+      f = f.gsub(/\n/m, "")
+      quote = f.match(/".*"/)
+      author = f.match(/    -- .*/)
       
-    #   Quote.new( { :text => quote, :author_attributes => {:name => author } } ).save!
-    # end
+      Quote.new( { :text => quote, :author_attributes => {:name => author } } ).save!
+    end
   end
 
   def count

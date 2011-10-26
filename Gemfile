@@ -7,7 +7,6 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -17,6 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'nifty-generators'
 
 group :development do 
   gem 'rails-footnotes', '>= 3.7.5.rc4'
@@ -29,7 +29,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'devise'
-  gem 'nifty-generators'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
+  gem 'growl'
 end
 
 # To use ActiveModel has_secure_password
