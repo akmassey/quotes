@@ -1,4 +1,4 @@
-class FortuneParser
+class Fortune
   attr_accessor :fortunes
 
   def parse( fortunes )
@@ -6,11 +6,18 @@ class FortuneParser
 
     @fortunes.delete_if { |f| f == "" }
 
-    @fortunes.each do |f|
-      f = f.gsub(/\n/m, "")
-      quote = f.match(/".*"/)
-      author = f.match(/    -- .*/)
+    @fortunes = @fortunes.map do |f|
+      f = f.gsub(/\n/, "")
+      f =~ /"(.*)"    -- (.*)/
+      quote = $1
+      author = $2
       
+      { :quote => quote, :author => author }
+    end
+  end
+
+  def quotes
+    @fortunes.map do |f|
       Quote.new( { :text => quote, :author_attributes => {:name => author } } ).save!
     end
   end

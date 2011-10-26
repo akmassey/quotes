@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe FortuneParser do 
+describe Fortune do 
   before :each do 
     @fortune_file = <<FORTUNE
 %
@@ -30,7 +30,7 @@ liberty than to those attending too small a degree of it."
 temporary safety, deserve neither liberty nor safety."
     -- Benjamin Franklin
 %
-"We are what we pretend to be, so we must be careful what we pretend
+"We are what we pretend to be, so we must be careful what we pretend 
 to be."
     -- Kurt Vonnegut
 %
@@ -38,8 +38,23 @@ FORTUNE
   end
 
   it "should parse a fortune file into an array of quote and author strings" do
-    fp = FortuneParser.new
-    fp.parse(@fortune_file)
-    fp.count.should be 8
+    f = Fortune.new
+    f.parse(@fortune_file)
+    f.count.should be 8
+  end
+
+  it "should properly identify authors" do 
+    f = Fortune.new
+    f.parse(@fortune_file)
+    f.fortunes[0][:author].should eq("Groucho Marx")
+    f.fortunes[1][:author].should eq("John Kenneth Galbraith")
+    f.fortunes[7][:author].should eq("Kurt Vonnegut")
+  end
+
+  it "should properly identify quotes" do
+    f = Fortune.new
+    f.parse(@fortune_file)
+    f.fortunes[0][:quote].should eq("Time flies like an arrow; fruit flies like a banana.")
+    f.fortunes[7][:quote].should eq("We are what we pretend to be, so we must be careful what we pretend to be.")
   end
 end
