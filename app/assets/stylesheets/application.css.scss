@@ -3,30 +3,34 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
 */
+
+$primary-color: #4b7399;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-color;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
 
 ul.hmenu {
   list-style: none;	
   margin: 0 0 2em;
   padding: 0;
-}
-ul.hmenu li {
-  display: inline;  
-}
 
-body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
-}
-
-a img {
-  border: none;
+  li {
+    display: inline;
+  }
 }
 
 a {
   color: #0000FF;
+
+  img {
+    border: none;
+  }
 }
 
 .clear {
@@ -70,30 +74,31 @@ a {
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-}
 
-#errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
 
-#errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 8px;
-}
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
+  }
 
-#errorExplanation ul {
-  margin: 2px 24px;
-}
+  p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
+  }
 
-#errorExplanation ul li {
-  font-size: 12px;
-  list-style: disc;
+  ul {
+    margin: 2px 24px;
+
+    li {
+      font-size: 12px;
+      list-style: disc;
+    }
+  }
 }
 

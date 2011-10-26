@@ -5,7 +5,7 @@ class Quote < ActiveRecord::Base
 
   belongs_to :author, :class_name => "Author", :foreign_key => "author_id"
 
-  accepts_nested_attributes_for :author
+  accepts_nested_attributes_for :author, :reject_if => proc { |attributes| attributes['name'].blank? }, :allow_destroy => true
 
   # TODO: if a URL is provided, it should be validated as a URL with a regex
 end
