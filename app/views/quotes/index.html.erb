@@ -13,7 +13,11 @@
 <% @quotes.each do |quote| %>
   <tr>
     <td><%= quote.text %></td>
-    <td><%= quote.author.name %></td>
+    <% if quote.author %>
+      <td><%= quote.author.name %></td>
+    <% else %>
+      <td>This quote has no author!</td>
+    <% end %>
     <td><%= quote.source_url %></td>
     <td><%= link_to 'Show', quote %></td>
     <td><%= link_to 'Edit', edit_quote_path(quote) %></td>

@@ -1,7 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Fortune do 
+require 'fortune'
+require 'database_cleaner'
+
+describe "Fortune" do 
   before :each do 
+    DatabaseCleaner.strategy = :truncation 
+    DatabaseCleaner.clean
+
     @fortune_file = <<FORTUNE
 %
 "Time flies like an arrow; fruit flies like a banana."
@@ -35,30 +41,75 @@ to be."
     -- Kurt Vonnegut
 %
 FORTUNE
+
+    @bad_fortune = <<MALFORMED
+%
+"Time flies like an arrow; fruit flies like a banana."
+%
+"If all else fails, immortality can always be assured by spectacular 
+error."
+    -- John Kenneth Galbraith
+%
+    -- Marilyn Manson
+%
+MALFORMED
+
+    @fortune = Fortune.new(@fortune_file)
   end
 
-  it "should parse a fortune file into an array of quote and author strings" do
-    f = Fortune.new
-    f.parse(@fortune_file)
-    f.count.should be 8
+  it "should parse the file into an array with the correct number of quotes" do
+    @fortune.count.should be 8
   end
 
   it "should properly identify authors" do 
-    f = Fortune.new
-    f.parse(@fortune_file)
-    f.fortunes[0][:author].should eq("Groucho Marx")
-    f.fortunes[1][:author].should eq("John Kenneth Galbraith")
-    f.fortunes[4][:author].should eq("Thomas Jefferson")
-    f.fortunes[5][:author].should eq("Aeschylus")
-    f.fortunes[6][:author].should eq("Benjamin Franklin")
-    f.fortunes[7][:author].should eq("Kurt Vonnegut")
+    @fortune.author(0).name.should eq("Groucho Marx")
+    @fortune.author(1).name.should eq("John Kenneth Galbraith")
+    @fortune.author(2).name.should eq("Marilyn Manson")
+    @fortune.author(3).name.should eq("Cardinal Richelieu")
+    @fortune.author(4).name.should eq("Thomas Jefferson")
+    @fortune.author(5).name.should eq("Aeschylus")
+    @fortune.author(6).name.should eq("Benjamin Franklin")
+    @fortune.author(7).name.should eq("Kurt Vonnegut")
   end
 
   it "should properly identify quotes" do
-    f = Fortune.new
-    f.parse(@fortune_file)
-    f.fortunes[0][:quote].should eq("Time flies like an arrow; fruit flies like a banana.")
-    f.fortunes[1][:quote].should eq("If all else fails, immortality can always be assured by spectacular error.")
-    f.fortunes[7][:quote].should eq("We are what we pretend to be, so we must be careful what we pretend to be.")
+    @fortune.quote(0).text.should eq("Time flies like an arrow; fruit flies like a banana.")
+    @fortune.quote(1).text.should eq("If all else fails, immortality can always be assured by spectacular error.")
+    @fortune.quote(7).text.should eq("We are what we pretend to be, so we must be careful what we pretend to be.")
   end
+
+  it "should create an array of author objects" do
+    @authors = @fortune.authors
+
+    @authors[0].name.should eq("Groucho Marx")
+    @authors[1].name.should eq("John Kenneth Galbraith")
+    @authors[2].name.should eq("Marilyn Manson")
+    @authors[3].name.should eq("Cardinal Richelieu")
+    @authors[4].name.should eq("Thomas Jefferson")
+    @authors[5].name.should eq("Aeschylus")
+    @authors[6].name.should eq("Benjamin Franklin")
+    @authors[7].name.should eq("Kurt Vonnegut")
+  end
+
+  it "should create an array of quote objects" do 
+    @quotes = @fortune.quotes
+
+    @quotes[0].text.should eq("Time flies like an arrow; fruit flies like a banana.")
+    @quotes[1].text.should eq("If all else fails, immortality can always be assured by spectacular error.")
+    @quotes[7].text.should eq("We are what we pretend to be, so we must be careful what we pretend to be.")
+
+    @quotes[0].author.name.should eq("Groucho Marx")
+    @quotes[1].author.name.should eq("John Kenneth Galbraith")
+    @quotes[2].author.name.should eq("Marilyn Manson")
+    @quotes[3].author.name.should eq("Cardinal Richelieu")
+    @quotes[4].author.name.should eq("Thomas Jefferson")
+    @quotes[5].author.name.should eq("Aeschylus")
+    @quotes[6].author.name.should eq("Benjamin Franklin")
+    @quotes[7].author.name.should eq("Kurt Vonnegut")
+  end
+  
+  it "should fail when provided a malformed fortune file" do
+    # TODO: finish this example
+    @fortune = Fortune.new(@fortune_file)
+  end    
 end

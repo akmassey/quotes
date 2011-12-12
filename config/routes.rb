@@ -1,6 +1,5 @@
 Quotes::Application.routes.draw do
   resources :authors
-
   resources :quotes
 
   root :to => "home#index"

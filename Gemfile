@@ -20,6 +20,9 @@ gem 'nifty-generators'
 
 group :development do 
   gem 'rails-footnotes', '>= 3.7.5.rc4'
+  gem 'yard'
+  # Needed for generating YARD
+  gem 'redcarpet'
 end
 
 group :development, :test do
@@ -35,6 +38,7 @@ group :development, :test do
 end
 
 group :test do 
+  # After configured, use `bundle exec guard` to get this going
   gem 'spork', '> 0.9.0.rc'
   gem 'guard-spork'
 end
