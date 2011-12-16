@@ -110,6 +110,15 @@ MALFORMED
   
   it "should fail when provided a malformed fortune file" do
     # TODO: finish this example
-    @fortune = Fortune.new(@fortune_file)
+    @fortune = Fortune.new(@bad_fortune)
+    
+    @fortune.count.should be 8
   end    
+  
+  it "should load from a new fortune file when asked" do
+    # TODO: finish this example
+    @fortune.load_from_fortune_file(@fortune_file)
+    
+    @fortune.count.should be 8
+  end
 end

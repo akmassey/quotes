@@ -3,12 +3,14 @@
 class Fortune
   attr_accessor :fortunes, :quotes, :authors
 
+  ##
+  # TODO: This initialize method is way too complex.
   def initialize(fortune_file)
     @fortunes = []
     @quotes = []
     @authors = []
     
-    self.parse(fortune_file) 
+    self.parse(fortune_file)
     self.create_quotes_and_authors
   end
 
@@ -73,6 +75,25 @@ class Fortune
         @quotes.push quote
       end
     end
+  end
+  
+  ##
+  # Loads fortunes from a traditional fortune file.
+  # TODO: This currently overwrites any existing fortunes, but it shouldn't.
+  def load_from_fortune_file(file)
+    fortunes = file.split("%")
+    
+    fortunes = fortunes.map do |f|      
+      f =~ /\n"(.*)"\n    -- (.*)/
+      quote = $1
+      author = $2
+      
+      next if ( quote == nil or author == nil )
+      
+      { :quote => quote, :author => author }
+    end
+    
+    # TODO: add the values to the hash
   end
 
   def count
