@@ -24,7 +24,7 @@ describe AuthorsController do
   # Author. As you add validations to Author, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:name => "Awesome"}
   end
 
   describe "GET index" do

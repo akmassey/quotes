@@ -1,4 +1,6 @@
 Quotes::Application.routes.draw do
+  resources :collections
+
   resources :authors
   resources :quotes
 

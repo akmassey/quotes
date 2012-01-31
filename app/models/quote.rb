@@ -7,5 +7,7 @@ class Quote < ActiveRecord::Base
 
   accepts_nested_attributes_for :author, :reject_if => proc { |attributes| attributes['name'].blank? }, :allow_destroy => true
 
+  has_and_belongs_to_many :collections
+
   # TODO: if a URL is provided, it should be validated as a URL with a regex
 end

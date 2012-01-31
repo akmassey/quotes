@@ -24,6 +24,12 @@
     <%= author_form.label :name %><br />
     <%= author_form.text_field :name %>
   <% end %>
+
+  <div class="field">
+    <%= f.label :collection %><br />
+    <%= f.collection_select :quotes, :collection_id, @collections, :id, :name, :include_blank => true %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

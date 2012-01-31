@@ -24,7 +24,7 @@ describe QuotesController do
   # Quote. As you add validations to Quote, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:text => "Here's a quote."}
   end
 
   describe "GET index" do
