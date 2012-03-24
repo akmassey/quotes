@@ -19,6 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe QuotesController do
+  include Devise::TestHelpers
+  render_views
 
   # This should return the minimal set of attributes required to create a valid
   # Quote. As you add validations to Quote, be sure to
@@ -27,11 +29,33 @@ describe QuotesController do
     {:text => "Here's a quote."}
   end
 
-  describe "GET index" do
-    it "assigns all quotes as @quotes" do
-      quote = Quote.create! valid_attributes
-      get :index
-      assigns(:quotes).should eq([quote])
+  context "when no user is logged in" do 
+    describe "GET index" do
+      it "assigns all quotes as @quotes" do
+        quote = Quote.create! valid_attributes
+        get :index
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  context "when a valid user is logged in" do 
+    before (:each) do
+      @user = Factory.create(:user)
+      sign_in @user
+    end
+
+    describe "GET index" do
+      it "should be successful" do
+        get 'index'
+        response.should be_success
+      end
+
+      it "assigns all quotes as @quotes" do
+        quote = Quote.create! valid_attributes
+        get :index
+        assigns(:quote).should eq(quote)
+      end
     end
   end
 
