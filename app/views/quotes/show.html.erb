@@ -3,9 +3,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>Text: <%= @quote.text %></p>
-<p>Author: <%= @quote.author.name %></p>
 
-<% unless @quote.collections.nil? %>
+<% unless @quote.author.nil? %> 
+  <p>Author: <%= @quote.author.name %></p>
+<% end %>
+
+<% unless @quote.collections.empty? %>
   <p>Collection: <%= @quote.collections.first.name %></p>
 <% end %>
 
