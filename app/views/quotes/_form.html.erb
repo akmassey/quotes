@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= f.label :collection %><br />
-    <%= f.collection_select :quotes, :collection_id, @collections, :id, :name, :include_blank => true %>
+    <%= f.collection_select(:collection_ids, Collection.all, :id, :name, :prompt => " ", :multiple => true, :include_blank => true) %>
   </div>
 
   <div class="actions">

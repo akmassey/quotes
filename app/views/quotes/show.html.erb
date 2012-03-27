@@ -2,8 +2,12 @@
 
 <p id="notice"><%= notice %></p>
 
-<p><%= @quote.text %></p>
-<p><%= @quote.author.name %></p>
+<p>Text: <%= @quote.text %></p>
+<p>Author: <%= @quote.author.name %></p>
+
+<% unless @quote.collections.nil? %>
+  <p>Collection: <%= @quote.collections.first.name %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
 <%= link_to 'Back', quotes_path %>

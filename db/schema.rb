@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120202160531) do
+ActiveRecord::Schema.define(:version => 20120327135022) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20120202160531) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "collections_quotes", :id => false, :force => true do |t|
+    t.integer "collection_id", :null => false
+    t.integer "quote_id",      :null => false
+  end
+
+  add_index "collections_quotes", ["collection_id", "quote_id"], :name => "index_collections_quotes_on_collection_id_and_quote_id", :unique => true
 
   create_table "quotes", :force => true do |t|
     t.text     "text"
