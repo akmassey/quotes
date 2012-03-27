@@ -1,0 +1,9 @@
+<%= form_for @collection do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+	<%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  <p><%= f.submit %></p>
+<% end %>
