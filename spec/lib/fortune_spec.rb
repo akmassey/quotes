@@ -110,6 +110,8 @@ MALFORMED
   
   it "should fail when provided a malformed fortune file" do
     # TODO: finish this example
+    pending "Need to finish this example..."
+
     @fortune = Fortune.new(@bad_fortune)
     
     @fortune.count.should be 8
