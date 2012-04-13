@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# Inspired by Gary Bernhardt's test script.  This just runs my specs and
+# gives me the output in the pretty HTML format.
+
+bundle exec rspec --format=html --out ./temp/rspec.html
+open -a Safari ./temp/rspec.html
