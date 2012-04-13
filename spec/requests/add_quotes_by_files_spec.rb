@@ -51,6 +51,6 @@ FORTUNE
   it "should add a series of quotes given a fortune file" do 
     visit root_path
 
-    fill_in 'Fortune', :with => @fortune_file
+    fill_in 'fortune', :with => @fortune_file
   end
 end
