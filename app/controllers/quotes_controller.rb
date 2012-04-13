@@ -4,6 +4,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
+    # TODO: Limit quotes to just the current user
     @quotes = Quote.all
 
     respond_to do |format|
