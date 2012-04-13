@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "quotes/new.html.erb" do
+describe "quotes/new" do
   before(:each) do
     assign(:quote, stub_model(Quote).as_new_record)
   end

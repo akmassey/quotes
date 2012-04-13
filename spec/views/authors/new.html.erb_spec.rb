@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "authors/new.html.erb" do
+describe "authors/new" do
   before(:each) do
     assign(:author, stub_model(Author,
       :name => "MyString",

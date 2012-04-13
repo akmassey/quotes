@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "quotes/edit.html.erb" do
+describe "quotes/edit" do
   before(:each) do
     @quote = assign(:quote, stub_model(Quote))
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "quotes/index.html.erb", :type => :request do
+describe "quotes/index", :type => :request do
   include Devise::TestHelpers
 
   before(:each) do

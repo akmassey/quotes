@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "authors/index.html.erb" do
+describe "authors/index" do
   before(:each) do
     assign(:authors, [
       stub_model(Author,
