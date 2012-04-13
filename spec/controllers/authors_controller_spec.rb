@@ -19,6 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe AuthorsController do
+  login_user
 
   # This should return the minimal set of attributes required to create a valid
   # Author. As you add validations to Author, be sure to
