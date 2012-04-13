@@ -19,8 +19,8 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe QuotesController do
-  # TODO: Eventually want to test this when no one is logged in...
-  login_user
+  # TODO: Eventually want to login the user here and then explicitly log
+  # them out for the test when they aren't supposed to be logged in.
 
   # This should return the minimal set of attributes required to create a valid
   # Quote. As you add validations to Quote, be sure to
@@ -40,6 +40,8 @@ describe QuotesController do
   end
 
   describe "GET index" do
+    login_user
+
     it "should be successful" do
       get 'index'
       response.should be_success
@@ -53,6 +55,8 @@ describe QuotesController do
   end
 
   describe "GET show" do
+    login_user
+
     it "assigns the requested quote as @quote" do
       quote = Quote.create! valid_attributes
       get :show, :id => quote.id.to_s
@@ -61,6 +65,8 @@ describe QuotesController do
   end
 
   describe "GET new" do
+    login_user
+
     it "assigns a new quote as @quote" do
       get :new
       assigns(:quote).should be_a_new(Quote)
@@ -68,6 +74,8 @@ describe QuotesController do
   end
 
   describe "GET edit" do
+    login_user
+
     it "assigns the requested quote as @quote" do
       quote = Quote.create! valid_attributes
       get :edit, :id => quote.id.to_s
@@ -76,6 +84,8 @@ describe QuotesController do
   end
 
   describe "POST create" do
+    login_user
+
     describe "with valid params" do
       it "creates a new Quote" do
         expect {
@@ -113,6 +123,8 @@ describe QuotesController do
   end
 
   describe "PUT update" do
+    login_user
+
     describe "with valid params" do
       it "updates the requested quote" do
         quote = Quote.create! valid_attributes
@@ -157,6 +169,8 @@ describe QuotesController do
   end
 
   describe "DELETE destroy" do
+    login_user
+
     it "destroys the requested quote" do
       quote = Quote.create! valid_attributes
       expect {
