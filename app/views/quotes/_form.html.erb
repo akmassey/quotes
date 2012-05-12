@@ -1,4 +1,4 @@
-<%= form_for(@quote) do |f| %>
+<%= simple_form_for @quote, :html => {:class => 'well form-horizontal' } do |f| %>
   <% if @quote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
@@ -11,14 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_area :text %>
-  </div>
-  <div class="field">
-    <%= f.label :source_url, "Source URL (optional)" %><br />
-    <%= f.text_field :source_url %>
-  </div>
+  <%= f.input :text, :label => "Text" %>
+  <%= f.input :source_url, :label => "Source URL (optional)" %>
 
   <%= f.fields_for :author do |author_form| %>
     <%= author_form.label :name %><br />

@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(:version => 20120327135022) do
     t.date     "born"
     t.date     "died"
     t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "collections", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "collections_quotes", :id => false, :force => true do |t|
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20120327135022) do
     t.text     "text"
     t.integer  "author_id"
     t.string   "source_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

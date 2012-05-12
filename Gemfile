@@ -13,9 +13,13 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
+  gem 'compass_twitter_bootstrap'
+  gem 'bootstrap-generators'
+  gem 'jquery-rails'
+  gem 'simple_form', '~> 2.0'
 end
 
-gem 'jquery-rails'
 gem 'nifty-generators'
 
 group :development do 
