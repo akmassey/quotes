@@ -1,12 +1,12 @@
 <%= simple_form_for @quote, :html => {:class => 'well form-horizontal' } do |f| %>
   <%= f.error_messages %>
-  <%= f.input :text, :label => "Text" %>
-  <%= f.input :source_url, :label => "Source URL (optional)" %>
+  <%= f.input :text, :label => "Text", input_html: { class: "span6", rows: "5" } %>
+  <%= f.input :source_url, :label => "Source URL (optional)", input_html: { class: "span6" } %>
 
   <%= f.simple_fields_for :author do |author_form| %>
-    <%= author_form.input :name %>
+    <%= author_form.input :name, input_html: { class: "span6" } %>
   <% end %>
 
-  <%= f.association :collections %>
+  <%= f.association :collections, input_html: { class: "span6" } %>
   <%= f.button :submit %>
 <% end %>
