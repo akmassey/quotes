@@ -1,7 +1,7 @@
 
 <%= title "Listing Quotes" %>
 
-<table>
+<table class="table table-striped table-condensed">
   <tr>
     <th>Text</th>
     <th>Author</th>
@@ -29,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New Quote', new_quote_path %>
+<%= button_to 'New Quote', new_quote_path, :class => "btn-primary" %>

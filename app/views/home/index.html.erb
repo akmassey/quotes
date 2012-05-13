@@ -1,12 +1,15 @@
 <% title "Home" %>
 
+<div class="hero-unit">
+  <h1>Welcome to Quotes!</h1>
 <%= form_tag root_path do %>
   <p>Please paste in a fortune file:</p>
 
-  <%= text_area_tag :fortune, params[:fortune] %>
+  <%= text_area_tag :fortune, params[:fortune], :class => "span6", :rows => "5" %><br />
 
-  <%= submit_tag "Parse" %>
+  <%= submit_tag "Parse", :class => "btn btn-primary btn-large" %>
 <% end %>
+</div>
 
 <% @users.each do |user| %>
   <p>User: <%= link_to user.name, user %> </p>
@@ -16,3 +19,5 @@
 <%= link_to "Quotes", quotes_path %>
   <%= @found %>
 </p>
+
+<%= render 'shared/quote' %>

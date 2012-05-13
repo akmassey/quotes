@@ -1,0 +1,11 @@
+<div class="well">
+
+  <blockquote>
+    <p>“<%= @quote.text %>”</p>
+
+    <% unless @quote.author.nil? %> 
+      <small><%= @quote.author.name %></small>
+    <% end %>
+  </blockquote>
+
+</div>
