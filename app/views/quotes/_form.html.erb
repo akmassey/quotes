@@ -1,30 +1,12 @@
 <%= simple_form_for @quote, :html => {:class => 'well form-horizontal' } do |f| %>
-  <% if @quote.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
-
-      <ul>
-      <% @quote.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= f.error_messages %>
   <%= f.input :text, :label => "Text" %>
   <%= f.input :source_url, :label => "Source URL (optional)" %>
 
-  <%= f.fields_for :author do |author_form| %>
-    <%= author_form.label :name %><br />
-    <%= author_form.text_field :name %>
+  <%= f.simple_fields_for :author do |author_form| %>
+    <%= author_form.input :name %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :collection %><br />
-    <%= f.collection_select(:collection_ids, Collection.all, :id, :name, :prompt => " ", :multiple => true, :include_blank => true) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.association :collections %>
+  <%= f.button :submit %>
 <% end %>

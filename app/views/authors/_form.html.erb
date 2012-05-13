@@ -1,33 +1,8 @@
-<%= form_for(@author) do |f| %>
-  <% if @author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
-
-      <ul>
-      <% @author.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :born %><br />
-    <%= f.date_select :born %>
-  </div>
-  <div class="field">
-    <%= f.label :died %><br />
-    <%= f.date_select :died %>
-  </div>
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @author, :html => {:class => 'well form-horizontal'} do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :name %>
+  <%= f.input :born %>
+  <%= f.input :died %>
+  <%= f.input :bio %>
+  <%= f.button :submit %>
 <% end %>
